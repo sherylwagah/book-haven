@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact - Book Haven</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("images/catalogue background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+}
+
+/* Contact Box */
+.contact-box {
+  background: white;
+  padding: 20px;
+  margin: 50px auto;
+  width: 300px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px pink;
+  text-align: center;
+}
+
+/* Navigation */
+nav {
+  text-align: center;
+  padding: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+nav a:hover {
+  color: #ff1493;
+}
+
+/* Map */
+.map-container {
+  width: 80%;
+  margin: 40px auto;
+  border-radius: 15px;
+  overflow: hidden;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <a href="index.html">home</a>
+  <a href="about.html">about</a>
+  <a href="catalogue.html">catalogue</a>
+  <a href="contact.html">contact</a>
+</nav>
+
+<div class="contact-box">
+  <p><strong>Name:</strong> Sheryl</p>
+  <p><strong>Email:</strong> sheryl@gmail.com</p>
+  <p><strong>Phone:</strong> 0712345678</p>
+</div>
+
+<div class="map-container">
+  <iframe 
+    src="https://www.google.com/maps?q=Mombasa&output=embed"
+    width="100%"
+    height="300"
+    style="border:0;"
+    allowfullscreen=""
+    loading="lazy">
+  </iframe>
+</div>
+
+</body>
+</html>

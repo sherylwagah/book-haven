@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catalogue - Book Haven</title>
+
+<style>
+body{
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-image: url("images/catalogue background.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: black;
+}
+
+/* NAV */
+nav{
+  text-align: center;
+  padding: 15px;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  margin: 0 15px;
+  font-size: 18px;
+}
+
+nav a:hover{
+  color: #ff1493;
+}
+
+h1{
+  text-align: center;
+  margin-top: 30px;
+}
+
+/* FORM */
+form{
+  width: 350px;
+  margin: 30px auto; /* FIXED center */
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+input, textarea{
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0; /* FIXED */
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+textarea{
+  resize: none;
+  height: 100px;
+}
+
+button{
+  width: 100%;
+  margin-top: 15px;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+  background-color: #ff69bf;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #ff1493;
+}
+
+/* BOOKS */
+.catalogue-container{
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin: 40px;
+}
+
+.book{
+  background-color: rgba(255,255,255,0.8);
+  width: 200px;
+  padding: 15px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* FIXED space */
+}
+
+.book img{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.book h3{
+  margin: 10px 0 5px;
+}
+
+.book p{
+  font-size: 14px;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Library Catalogue</h1>
+
+<nav>
+  <a href="index.html">home</a>
+  <a href="about.html">about</a> 
+  <a href="catalogue.html">catalogue</a>
+  <a href="contact.html">contact</a> 
+</nav>
+
+<h2 style="text-align:center;">Add a New Book</h2>
+
+<form id="bookForm">
+
+<label>Book</label>
+<input type="text" id="book" required>
+
+<label>Author</label>
+<input type="text" id="author" required>
+
+<label>Synopsis</label>
+<textarea id="synopsis" required></textarea>
+
+<button type="submit">Submit Book</button>
+
+</form>
+
+<!-- SCRIPT -->
+<script>
+document.getElementById("bookForm").addEventListener("submit", function(e){
+  e.preventDefault();
+
+  fetch("http://localhost:3000/api/addbook", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      book: document.getElementById("book").value,
+      author: document.getElementById("author").value,
+      synopsis: document.getElementById("synopsis").value
+    })
+  })
+  .then(res => res.text())
+  .then(data => alert(data))
+  .catch(err => alert("Error: " + err));
+});
+</script>
+
+<!-- BOOK DISPLAY -->
+<div class="catalogue-container">
+
+  <div class="book">
+    <img src="images/It Ends With Us book1.jpg">
+    <h3>It Ends With Us</h3>
+    <p>A powerful romantic story about love and strength</p>
+  </div>
+
+  <div class="book">
+    <img src="images/Little Do You Know book2.jpg">
+    <h3>Little Do You Know</h3>
+    <p>An interesting collection of fun and surprising facts.</p>
+  </div>
+
+  <div class="book">
+    <img src="images/Make Me Losebook3.jpg">
+    <h3>Make Me Lose</h3>
+    <p>A dramatic novel full of emotion and unexpected twists</p>
+  </div>
+
+</div>
+
+</body>
+</html>
